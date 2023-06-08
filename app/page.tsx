@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -6,7 +6,7 @@ export default function Home() {
       <main className="max-w-screen-2xl m-auto bg-white">
         {/* NAVBAR */}
         <nav className="bg-white p-2 flex justify-between">
-          <a href="" className="font-bold text-gray-700 text-2xl"> OpenTable </a>
+          <Link href="/" className="font-bold text-gray-700 text-2xl"> OpenTable </Link>
           <div>
             <div className="flex">
               <button
@@ -43,6 +43,7 @@ export default function Home() {
           {/* HEADER */} {/* CARDS */}
           <div className="py-3 px-36 mt-10 flex flex-wrap justify-center">
             {/* CARD */}
+            <Link href="/restaurant/name">
             <div
               className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer"
             >
@@ -65,6 +66,7 @@ export default function Home() {
                 <p className="text-sm mt-1 font-bold">Booked 3 times today</p>
               </div>
             </div>
+            </Link>
             {/* CARD */}
           </div>
           {/* CARDS */}
