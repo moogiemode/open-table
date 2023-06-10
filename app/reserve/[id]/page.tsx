@@ -1,5 +1,7 @@
 import { Form, Header } from './components';
-
+export const metadata = {
+  title: 'RESERVE AT RESTAURANT NAME!!!',
+};
 export default function ReservationPage() {
   return (
     <div className="border-t h-screen">
