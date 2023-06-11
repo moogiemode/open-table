@@ -15,10 +15,10 @@ interface Restaurant {
   slug: string;
 }
 
-const fetchRestaurantBySlug = async (id: string): Promise<Restaurant> => {
+const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
   const restaurant = await prisma.restaurant.findUnique({
     where: {
-      slug: id,
+      slug,
     },
     select: {
       id: true,
@@ -34,8 +34,8 @@ const fetchRestaurantBySlug = async (id: string): Promise<Restaurant> => {
   return restaurant;
 };
 
-export default async function RestaurantDetails({ params: { id } }: { params: { id: string } }) {
-  const restaurant = await fetchRestaurantBySlug(id);
+export default async function RestaurantDetails({ params: { slug } }: { params: { slug: string } }) {
+  const restaurant = await fetchRestaurantBySlug(slug);
   console.log(restaurant);
   return (
     <>
