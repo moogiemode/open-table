@@ -18,7 +18,7 @@ const fetchRestaurantMenu = async (slug: string) => {
   });
 
   if (!restaurant) {
-    throw new Error('Restaurant not found');
+    throw new Error('Restaurant not found!');
   }
 
   return restaurant.items;
