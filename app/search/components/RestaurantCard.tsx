@@ -1,5 +1,6 @@
-import { Price } from '@/app/components';
-import { Cuisine, Location, PRICE } from '@prisma/client';
+import { Price, Stars } from '@/app/components';
+import { calculateReviewRatingsAverage } from '@/utils';
+import { Cuisine, Location, PRICE, Review } from '@prisma/client';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -12,9 +13,14 @@ interface RestaurantCardProps {
     cuisine: Cuisine;
     location: Location;
     slug: string;
+    reviews: Review[];
   };
 }
 
+const renderRatingstext = (reviews: Review[]) => {
+  const rating = calculateReviewRatingsAverage(reviews);
+  return rating > 4 ? 'Awesome' : rating > 3 ? 'Good' : rating > 0 ? 'Average' : '';
+};
 export const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
     <div className="border-b flex pb-5 ml-4">
@@ -22,8 +28,8 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({ restaurant }) => {
       <div className="pl-5">
         <h2 className="text-3xl">{restaurant.name}</h2>
         <div className="flex items-start">
-          <div className="flex mb-2">*****</div>
-          <p className="ml-2 text-sm">Awesome</p>
+          <Stars reviews={restaurant.reviews} />
+          <p className="ml-2 text-sm">{renderRatingstext(restaurant.reviews)}</p>
         </div>
         <div className="mb-9">
           <div className="font-light flex text-reg">

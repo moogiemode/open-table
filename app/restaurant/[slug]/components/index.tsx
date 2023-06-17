@@ -6,5 +6,6 @@ export * from './MenuCard';
 export * from './Rating';
 export * from './ReservationCard';
 export * from './RestaurantNavBar';
+export * from './ReviewCard';
 export * from './Reviews';
 export * from './Title';
