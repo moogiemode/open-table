@@ -10,7 +10,7 @@ export const SearchBar = () => {
 
   const handleSearchClick = () => {
     if (!location) return;
-    router.push(`/search`);
+    router.push(`/search?city=${location}`);
   };
 
   return (
