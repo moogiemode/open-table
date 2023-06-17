@@ -1,26 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { Cuisine, Location } from '@prisma/client';
 
-const prisma = new PrismaClient();
-
-const fetchLocationsAndCuisines = async () => {
-  const locations = await prisma.location.findMany({
-    select: {
-      name: true,
-    },
-  });
-  const cuisines = await prisma.cuisine.findMany({
-    select: {
-      name: true,
-    },
-  });
-  return { locations, cuisines };
-};
-
-export const SearchSideBar = async () => {
-  const { locations, cuisines } = await fetchLocationsAndCuisines();
-
-  console.log(locations, cuisines);
-
+export const SearchSideBar = async ({ locations, cuisines }: { locations: Location[]; cuisines: Cuisine[] }) => {
   return (
     <div className="w-1/5">
       <div className="border-b pb-4">
